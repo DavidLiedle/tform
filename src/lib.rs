@@ -1,13 +1,13 @@
-//! # tform - Rust TUI Form Builder
+//! # ratatui_form - Rust TUI Form Builder
 //!
 //! A Rust crate built on RataTUI that makes building terminal forms easy.
-//! Developers import `tform` and use a fluent builder API to create forms
+//! Developers import `ratatui_form` and use a fluent builder API to create forms
 //! with pre-built field types and composite blocks (like address).
 //!
 //! ## Example
 //!
 //! ```no_run
-//! use tform::{Form, AddressBlock};
+//! use ratatui_form::{Form, AddressBlock};
 //!
 //! let form = Form::builder()
 //!     .title("Shipping Info")

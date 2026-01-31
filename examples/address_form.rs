@@ -13,7 +13,7 @@ use ratatui::{
     backend::CrosstermBackend,
     Terminal,
 };
-use tform::{AddressBlock, Form, FormResult};
+use ratatui_form::{AddressBlock, Form, FormResult};
 
 fn main() -> io::Result<()> {
     // Setup terminal
@@ -33,7 +33,7 @@ fn main() -> io::Result<()> {
         .text("email", "Email")
             .placeholder("john@example.com")
             .required()
-            .validator(Box::new(tform::Email))
+            .validator(Box::new(ratatui_form::Email))
             .done()
         .text("phone", "Phone")
             .placeholder("(555) 123-4567")

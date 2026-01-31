@@ -1,4 +1,4 @@
-# tform
+# ratatui-form
 
 A Rust TUI form builder crate built on [Ratatui](https://github.com/ratatui/ratatui). Create terminal forms with a fluent builder API, pre-built field types, and composite blocks for common patterns like addresses and contact info.
 
@@ -18,7 +18,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-tform = "0.1.0"
+ratatui-form = "0.1.0"
 ```
 
 ## Quick Start
@@ -29,7 +29,7 @@ use crossterm::event::{self, Event};
 use crossterm::terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen};
 use crossterm::execute;
 use ratatui::{backend::CrosstermBackend, Terminal};
-use tform::{Form, FormResult, AddressBlock, Email};
+use ratatui_form::{Form, FormResult, AddressBlock, Email};
 
 fn main() -> io::Result<()> {
     // Setup terminal
@@ -139,7 +139,7 @@ Blocks are pre-configured groups of related fields.
 US address with street, city, state (dropdown), and ZIP code validation.
 
 ```rust
-use tform::AddressBlock;
+use ratatui_form::AddressBlock;
 
 Form::builder()
     .block(AddressBlock::new("shipping").required())
@@ -153,7 +153,7 @@ Creates fields: `shipping_street1`, `shipping_street2`, `shipping_city`, `shippi
 Contact information with email validation.
 
 ```rust
-use tform::ContactBlock;
+use ratatui_form::ContactBlock;
 
 Form::builder()
     .block(ContactBlock::new("contact").required())
@@ -167,7 +167,7 @@ Creates fields: `contact_name`, `contact_email`, `contact_phone`
 Start and end date fields with YYYY-MM-DD format validation.
 
 ```rust
-use tform::DateRangeBlock;
+use ratatui_form::DateRangeBlock;
 
 Form::builder()
     .block(DateRangeBlock::new("trip").required())
@@ -181,7 +181,7 @@ Creates fields: `trip_start`, `trip_end`
 ### Built-in Validators
 
 ```rust
-use tform::{Required, Email, MinLength, MaxLength, Pattern};
+use ratatui_form::{Required, Email, MinLength, MaxLength, Pattern};
 
 // Required - field cannot be empty
 .validator(Box::new(Required))
@@ -209,7 +209,7 @@ use tform::{Required, Email, MinLength, MaxLength, Pattern};
 Implement the `Validator` trait:
 
 ```rust
-use tform::Validator;
+use ratatui_form::Validator;
 
 struct EvenNumber;
 
@@ -246,7 +246,7 @@ impl Validator for EvenNumber {
 ### Using Presets
 
 ```rust
-use tform::FormStyle;
+use ratatui_form::FormStyle;
 
 // Dark theme (default)
 Form::builder()
@@ -262,7 +262,7 @@ Form::builder()
 ### Custom Styles
 
 ```rust
-use tform::FormStyle;
+use ratatui_form::FormStyle;
 use ratatui::style::{Color, Modifier, Style};
 
 let custom_style = FormStyle::new()
