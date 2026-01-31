@@ -1,0 +1,18 @@
+[package]
+name = "tform"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "A Rust TUI form builder crate built on RataTUI"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+unicode-width = "0.2"
+regex = "1.10"
+
+[[example]]
+name = "address_form"
+path = "examples/address_form.rs"
