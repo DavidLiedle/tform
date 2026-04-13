@@ -196,8 +196,8 @@ impl Form {
 
         // Render each field
         for (i, field) in self.fields.iter().enumerate() {
-            let is_focused = !self.focus_manager.is_submit_focused()
-                && i == self.focus_manager.current_index();
+            let is_focused =
+                !self.focus_manager.is_submit_focused() && i == self.focus_manager.current_index();
             field.render(layout[i], buf, is_focused, &self.style);
         }
 
@@ -236,7 +236,11 @@ impl Form {
             self.style.button
         };
 
-        let text = if is_focused { "[ Submit ]" } else { "  Submit  " };
+        let text = if is_focused {
+            "[ Submit ]"
+        } else {
+            "  Submit  "
+        };
 
         // Center the button
         let button_width = text.len() as u16;

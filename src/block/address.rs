@@ -106,8 +106,8 @@ impl Block for AddressBlock {
         let mut fields: Vec<Box<dyn Field>> = Vec::new();
 
         // Street Address 1
-        let mut street1 = TextInput::new(self.field_id("street1"), "Street Address")
-            .placeholder("123 Main St");
+        let mut street1 =
+            TextInput::new(self.field_id("street1"), "Street Address").placeholder("123 Main St");
         if self.required {
             street1 = street1.required();
         }
@@ -119,8 +119,7 @@ impl Block for AddressBlock {
         fields.push(Box::new(street2));
 
         // City
-        let mut city = TextInput::new(self.field_id("city"), "City")
-            .placeholder("City");
+        let mut city = TextInput::new(self.field_id("city"), "City").placeholder("City");
         if self.required {
             city = city.required();
         }

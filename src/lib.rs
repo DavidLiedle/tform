@@ -128,17 +128,17 @@
 //! [`Form::to_json`] returns a flat `serde_json::Value` keyed by field id;
 //! [`Form::write_json`] writes the pretty-printed JSON to disk.
 
-pub mod field;
 pub mod block;
+pub mod field;
 pub mod form;
 pub mod navigation;
 pub mod style;
 pub mod validation;
 
-pub use field::{Field, TextInput, Select, Checkbox};
-pub use block::{Block, AddressBlock, ContactBlock, DateRangeBlock};
+pub use block::{AddressBlock, Block, ContactBlock, DateRangeBlock};
+pub use field::{Checkbox, Field, Select, TextInput};
 pub use form::{Form, FormBuilder, FormResult};
 pub use navigation::FocusManager;
 pub use style::FormStyle;
+pub use validation::rules::{Email, MaxLength, MinLength, Pattern, Required};
 pub use validation::{ValidationError, Validator};
-pub use validation::rules::{Required, Email, MinLength, MaxLength, Pattern};

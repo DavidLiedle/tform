@@ -22,15 +22,15 @@ fn main() -> io::Result<()> {
     let mut form = Form::builder()
         .title("Log In")
         .text("username", "Username")
-            .placeholder("your-handle")
-            .required()
-            .validator(Box::new(MinLength(3)))
-            .done()
+        .placeholder("your-handle")
+        .required()
+        .validator(Box::new(MinLength(3)))
+        .done()
         .text("password", "Password")
-            .placeholder("at least 8 characters")
-            .required()
-            .validator(Box::new(MinLength(8)))
-            .done()
+        .placeholder("at least 8 characters")
+        .required()
+        .validator(Box::new(MinLength(8)))
+        .done()
         .build();
 
     loop {

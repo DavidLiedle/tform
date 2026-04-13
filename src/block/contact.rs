@@ -51,8 +51,7 @@ impl Block for ContactBlock {
         let mut fields: Vec<Box<dyn Field>> = Vec::new();
 
         // Full Name
-        let mut name = TextInput::new(self.field_id("name"), "Full Name")
-            .placeholder("John Doe");
+        let mut name = TextInput::new(self.field_id("name"), "Full Name").placeholder("John Doe");
         if self.required {
             name = name.required();
         }

@@ -1,20 +1,20 @@
 //! Field types for form inputs.
 
-mod text;
-mod select;
 mod checkbox;
+mod select;
+mod text;
 
-pub use text::TextInput;
-pub use select::Select;
 pub use checkbox::Checkbox;
+pub use select::Select;
+pub use text::TextInput;
 
 use crossterm::event::KeyEvent;
 use ratatui::buffer::Buffer;
 use ratatui::layout::Rect;
 use serde_json::Value;
 
-use crate::validation::ValidationError;
 use crate::style::FormStyle;
+use crate::validation::ValidationError;
 
 /// Trait for form fields.
 pub trait Field: Send + Sync {

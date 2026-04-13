@@ -8,8 +8,8 @@ use serde_json::Value;
 use crate::block::Block;
 use crate::field::{Field, TextInput};
 use crate::style::FormStyle;
-use crate::validation::ValidationError;
 use crate::validation::rules::Pattern;
+use crate::validation::ValidationError;
 
 /// A composite block for date ranges (start date and end date).
 pub struct DateRangeBlock {
@@ -168,8 +168,10 @@ impl Field for DateRangeField {
             height: 1,
         };
 
-        self.start_field.render(start_area, buf, focused && self.current_focus == 0, style);
-        self.end_field.render(end_area, buf, focused && self.current_focus == 1, style);
+        self.start_field
+            .render(start_area, buf, focused && self.current_focus == 0, style);
+        self.end_field
+            .render(end_area, buf, focused && self.current_focus == 1, style);
     }
 
     fn handle_input(&mut self, event: &KeyEvent) -> bool {

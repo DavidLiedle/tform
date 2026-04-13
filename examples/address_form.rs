@@ -9,10 +9,7 @@ use crossterm::{
     execute,
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
-use ratatui::{
-    backend::CrosstermBackend,
-    Terminal,
-};
+use ratatui::{backend::CrosstermBackend, Terminal};
 use ratatui_form::{AddressBlock, Form, FormResult};
 
 fn main() -> io::Result<()> {
@@ -27,23 +24,23 @@ fn main() -> io::Result<()> {
     let mut form = Form::builder()
         .title("Shipping Information")
         .text("name", "Full Name")
-            .placeholder("John Doe")
-            .required()
-            .done()
+        .placeholder("John Doe")
+        .required()
+        .done()
         .text("email", "Email")
-            .placeholder("john@example.com")
-            .required()
-            .validator(Box::new(ratatui_form::Email))
-            .done()
+        .placeholder("john@example.com")
+        .required()
+        .validator(Box::new(ratatui_form::Email))
+        .done()
         .text("phone", "Phone")
-            .placeholder("(555) 123-4567")
-            .done()
+        .placeholder("(555) 123-4567")
+        .done()
         .block(AddressBlock::new("shipping").required())
         .checkbox("newsletter", "Subscribe to newsletter")
-            .done()
+        .done()
         .checkbox("terms", "I agree to the terms and conditions")
-            .required()
-            .done()
+        .required()
+        .done()
         .build();
 
     // Main loop

@@ -112,7 +112,10 @@ impl Pattern {
 
     /// Creates a date validator (YYYY-MM-DD format).
     pub fn date() -> Self {
-        Self::new(r"^\d{4}-\d{2}-\d{2}$", "Invalid date format (use YYYY-MM-DD)")
+        Self::new(
+            r"^\d{4}-\d{2}-\d{2}$",
+            "Invalid date format (use YYYY-MM-DD)",
+        )
     }
 }
 
