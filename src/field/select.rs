@@ -236,21 +236,13 @@ impl Field for Select {
                 }
                 true
             }
-            KeyCode::Esc => {
-                if self.is_open {
-                    self.is_open = false;
-                    true
-                } else {
-                    false
-                }
+            KeyCode::Esc if self.is_open => {
+                self.is_open = false;
+                true
             }
-            KeyCode::Up => {
-                if self.is_open {
-                    self.move_highlight_up();
-                    true
-                } else {
-                    false
-                }
+            KeyCode::Up if self.is_open => {
+                self.move_highlight_up();
+                true
             }
             KeyCode::Down => {
                 if self.is_open {
