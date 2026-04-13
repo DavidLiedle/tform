@@ -1,6 +1,12 @@
 # ratatui-form
 
+[![crates.io](https://img.shields.io/crates/v/ratatui-form.svg)](https://crates.io/crates/ratatui-form)
+[![docs.rs](https://docs.rs/ratatui-form/badge.svg)](https://docs.rs/ratatui-form)
+[![CI](https://github.com/DavidLiedle/ratatui-form/actions/workflows/ci.yml/badge.svg)](https://github.com/DavidLiedle/ratatui-form/actions/workflows/ci.yml)
+
 A Rust TUI form builder crate built on [Ratatui](https://github.com/ratatui/ratatui). Create terminal forms with a fluent builder API, pre-built field types, and composite blocks for common patterns like addresses and contact info.
+
+![demo](demo.gif)
 
 > **Note:** This crate was originally developed under the name `tform`, but was renamed to `ratatui-form` to avoid confusion with the unrelated [tform](https://crates.io/crates/tform) crate. If you were using the old name, please update your dependencies to `ratatui-form`.
 

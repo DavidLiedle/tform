@@ -1,0 +1,88 @@
+//! Example: Survey form showcasing selects, checkboxes, and the light theme.
+//!
+//! Run with: `cargo run --example survey_form`
+
+use std::io;
+
+use crossterm::{
+    event::{self, Event, KeyCode},
+    execute,
+    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+};
+use ratatui::{backend::CrosstermBackend, Terminal};
+use ratatui_form::{Form, FormResult, FormStyle};
+
+fn main() -> io::Result<()> {
+    enable_raw_mode()?;
+    let mut stdout = io::stdout();
+    execute!(stdout, EnterAlternateScreen)?;
+    let backend = CrosstermBackend::new(stdout);
+    let mut terminal = Terminal::new(backend)?;
+
+    let mut form = Form::builder()
+        .title("Quick Survey")
+        .style(FormStyle::light())
+        .select("color", "Favorite color")
+            .option("red", "Red")
+            .option("orange", "Orange")
+            .option("yellow", "Yellow")
+            .option("green", "Green")
+            .option("blue", "Blue")
+            .option("purple", "Purple")
+            .required()
+            .done()
+        .select("satisfaction", "Satisfaction (1-5)")
+            .option("1", "1 — Very dissatisfied")
+            .option("2", "2 — Dissatisfied")
+            .option("3", "3 — Neutral")
+            .option("4", "4 — Satisfied")
+            .option("5", "5 — Very satisfied")
+            .required()
+            .initial_value("3")
+            .done()
+        .checkbox("interest_rust", "Interested in Rust")
+            .done()
+        .checkbox("interest_tui", "Interested in TUIs")
+            .done()
+        .checkbox("interest_web", "Interested in web dev")
+            .done()
+        .text("comments", "Comments")
+            .placeholder("Anything else?")
+            .done()
+        .build();
+
+    loop {
+        terminal.draw(|frame| {
+            form.render(frame.area(), frame.buffer_mut());
+        })?;
+
+        if let Event::Key(key) = event::read()? {
+            if key.code == KeyCode::Char('c')
+                && key.modifiers.contains(event::KeyModifiers::CONTROL)
+            {
+                break;
+            }
+
+            form.handle_input(key);
+
+            match form.result() {
+                FormResult::Submitted | FormResult::Cancelled => break,
+                FormResult::Active => {}
+            }
+        }
+    }
+
+    disable_raw_mode()?;
+    execute!(terminal.backend_mut(), LeaveAlternateScreen)?;
+
+    match form.result() {
+        FormResult::Submitted => {
+            println!("Thanks for your feedback!");
+            println!("{}", serde_json::to_string_pretty(&form.to_json()).unwrap());
+        }
+        FormResult::Cancelled => println!("Survey cancelled."),
+        FormResult::Active => println!("Form exited."),
+    }
+
+    Ok(())
+}

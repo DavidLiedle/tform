@@ -20,3 +20,11 @@ regex = "1.10"
 [[example]]
 name = "address_form"
 path = "examples/address_form.rs"
+
+[[example]]
+name = "login_form"
+path = "examples/login_form.rs"
+
+[[example]]
+name = "survey_form"
+path = "examples/survey_form.rs"
